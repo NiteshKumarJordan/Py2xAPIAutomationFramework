@@ -29,8 +29,8 @@ class TestCreateBooking(object):
         verify_https_status_code(self, response_data=response, expect_data=200)
         verify_json_key_for_not_null(booking_id)
 
-    def test_create_booking_tc2_negative(self):
+    def test_create_booking_tc2_negative(self, response_data):
         response = post_request(url=APIConstants.url_create_booking(self), auth=None,
-                                headers=Util.common_headers_json(self),
+                                headers=Util.common_headers_json(),
                                 payload=payload_create_booking(), in_json=False)
-        verify_https_status_code(response, expect_data=500)
+        verify_https_status_code(response, 500)
